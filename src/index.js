@@ -43,3 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return select
   }
+  function colorPriority() {
+    const select = document.querySelector('select')
+    debugger
+    select.addEventListener('change', (e) => {
+      // // console.log(e.target.value);
+      // let choice = document.getElementById('new-task-description')
+      // choice.style = `color: ${e.target.textContent}`
+      // return e.target.value
+      console.log(e);
+    })
+  }
