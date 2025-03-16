@@ -32,4 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
       element.reset()
     })
   }
-  
+  function selectTag() {
+    const select = document.getElementById('colors')
+    const colors = ['', 'red', 'yellow', 'green']
+    const colors = ['', 'red', 'orange', 'green']
+    for(let color of colors) {
+      let option = document.createElement('option')
+      option.textContent = color
+  @@ -44,15 +48,3 @@ function selectTag() {
+    }
+    return select
+  }
