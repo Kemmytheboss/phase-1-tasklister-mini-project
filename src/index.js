@@ -1,48 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // your code here
-  //creating eventlisteners for form and tasklist
   const form = document.getElementById("create-task-form");
-  const tasklist = document.getElementById("tasks");
+  const taskList = document.getElementById("tasks");
 
-  form.addEventListener("submit", function(e){
-    e.preventDefault();//this prevents page from reladoing
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent form from refreshing the page
 
     const taskInput = document.getElementById("new-task-description");
-    const taskText = taskInput.ariaValueMax.trim();
+    const priorityInput = document.getElementById("priority");
 
-    if(taskText === "" ) return; // it ensures no empty task is added
+    const taskText = taskInput.value.trim();
+    const priority = priorityInput.value;
+
+    if (taskText === "") return; // Skip if empty
 
     const li = document.createElement("li");
-    li.textContent = taskText + "";
+    li.textContent = taskText;
 
-    const deleteBtn = document.createElement("button"); //adding delete button for eacj Task
-    deleteBtn.textContent = "X";
-    deleteBtn.style.marginLeft = "10px";
-    deleteBtn.addEventListener("click", ()=>{
-      li.remove();
-    })
+    // Set color based on priority
+    if (priority === "high") {
+      li.style.color = "red";
+    } else if (priority === "medium") {
+      li.style.color = "orange";
+    } else if (priority === "low") {
+      li.style.color = "green";
+    }
 
-    li.appendChild(deleteBtn);
-    tasklist.appendChild(li);
+    taskList.appendChild(li);
 
-    taskInput.value = ""; //this clears the input field
-
+    // Reset form
+    taskInput.value = "";
+    priorityInput.value = "medium";
   });
 });
-
-//styling the priority 
-const priority = document.getElementById("priority").value;
-
-switch (priority) {
-  case "high":
-    li.style.color = "red";
-    break;
-  case "medium":
-    li.style.color = "orange";
-    break;
-  case "low":
-    li.style.color = "green";
-    break;
-}
-
-
