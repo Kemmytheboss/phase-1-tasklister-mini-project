@@ -26,7 +26,23 @@ document.addEventListener("DOMContentLoaded", () => {
     tasklist.appendChild(li);
 
     taskInput.value = ""; //this clears the input field
+
   });
 });
+
+//styling the priority 
+const priority = document.getElementById("priority").value;
+
+switch (priority) {
+  case "high":
+    li.style.color = "red";
+    break;
+  case "medium":
+    li.style.color = "orange";
+    break;
+  case "low":
+    li.style.color = "green";
+    break;
+}
 
 
