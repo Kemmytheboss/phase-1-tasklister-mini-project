@@ -13,10 +13,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if(taskText === "" ) return; // it ensures no empty task is added
 
     const li = document.createElement("li");
-    li.textContent = taskText;
+    li.textContent = taskText + "";
 
+    const deleteBtn = document.createElement("button"); //adding delete button for eacj Task
+    deleteBtn.textContent = "X";
+    deleteBtn.style.marginLeft = "10px";
+    deleteBtn.addEventListener("click", ()=>{
+      li.remove();
+    })
+
+    li.appendChild(deleteBtn);
     tasklist.appendChild(li);
 
     taskInput.value = ""; //this clears the input field
   });
 });
+
+
