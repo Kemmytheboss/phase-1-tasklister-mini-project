@@ -1,18 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // your code here
+  //creating eventlisteners for form and tasklist
   const form = document.getElementById("create-task-form");
-  const taskList = document.getElementById("tasks");
+  const tasklist = document.getElementById("tasks");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent page refresh
+  form.addEventListener("submit", function(e){
+    e.preventDefault();//this prevents page from reladoing
 
     const taskInput = document.getElementById("new-task-description");
-    const taskText = taskInput.value.trim();
+    const taskText = taskInput.ariaValueMax.trim();
 
-    if (taskText !== "") {
-      const li = document.createElement("li");
-      li.textContent = taskText;
-      taskList.appendChild(li);
-      taskInput.value = ""; // Clear input field
-    }
+    if(taskText === "" ) return; // it ensures no empty task is added
+
+    const li = document.createElement("li");
+    li.textContent = taskText + "";
+
+    const deleteBtn = document.createElement("button"); //adding delete button for eacj Task
+    deleteBtn.textContent = "X";
+    deleteBtn.style.marginLeft = "10px";
+    deleteBtn.addEventListener("click", ()=>{
+      li.remove();
+    })
+
+    li.appendChild(deleteBtn);
+    tasklist.appendChild(li);
+
+    taskInput.value = ""; //this clears the input field
+
   });
 });
+
+//styling the priority 
+const priority = document.getElementById("priority").value;
+
+switch (priority) {
+  case "high":
+    li.style.color = "red";
+    break;
+  case "medium":
+    li.style.color = "orange";
+    break;
+  case "low":
+    li.style.color = "green";
+    break;
+}
+
+
