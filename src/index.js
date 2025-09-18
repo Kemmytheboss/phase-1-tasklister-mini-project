@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     taskList.appendChild(li);
 
-    // Reset form
+    // Reset form.
     taskInput.value = "";
     priorityInput.value = "medium";
   });
